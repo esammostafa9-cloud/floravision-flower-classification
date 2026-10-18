@@ -1,0 +1,31 @@
+# Dependabot version updates: one grouped PR per ecosystem per month.
+# Security fixes are separate: they are opened as soon as a vulnerability is published.
+version: 2
+updates:
+  # requirements.txt and pyproject.toml
+  - package-ecosystem: pip
+    directory: /
+    schedule:
+      interval: monthly
+    open-pull-requests-limit: 5
+    groups:
+      python-dependencies:
+        patterns: ["*"]
+    ignore:
+      # Major upgrades can break loading .keras files, so they are done by hand.
+      - dependency-name: tensorflow
+        update-types: ["version-update:semver-major"]
+      - dependency-name: keras
+        update-types: ["version-update:semver-major"]
+      # Major Gradio releases change the UI API the demo uses; upgrade deliberately.
+      - dependency-name: gradio
+        update-types: ["version-update:semver-major"]
+
+  # Actions used in .github/workflows
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: monthly
+    groups:
+      github-actions:
+        patterns: ["*"]

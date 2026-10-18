@@ -1,0 +1,62 @@
+# --- Data, models and run outputs (never commit) ---
+data/
+runs/
+models/
+*.zip
+*.tgz
+*.tar.gz
+*.keras
+*.h5
+*.hdf5
+*.ckpt*
+*.tflite
+*.npz
+saved_model/
+
+# --- Local-only material ---
+_archive/
+notebooks/
+*.pdf
+*.docx
+*.doc
+*.pptx
+*.ipynb
+.ipynb_checkpoints/
+
+# --- Secrets ---
+.env
+.env.*
+*.pem
+*.key
+credentials*.json
+service-account*.json
+kaggle.json
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+.venv/
+venv/
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# --- Gradio ---
+.gradio/
+flagged/
+
+# --- OS / editors / tools ---
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+.claude/
+
+# --- Interrupted downloads ---
+*.part

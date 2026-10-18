@@ -1,0 +1,55 @@
+name: tests
+
+on:
+  push:
+  pull_request:
+
+# Least privilege: the jobs only need to read the code. Actions are pinned to commit SHAs
+# (Dependabot keeps them current) so a moved tag cannot change what runs.
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1  # v7
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97  # v7
+        with:
+          python-version: "3.11"
+          cache: pip
+      - name: Install
+        run: |
+          python -m pip install --upgrade pip "setuptools>=83"  # the runner ships an older, vulnerable setuptools
+          pip install -r requirements.txt
+          pip install -e ".[dev]"
+      - name: Lint
+        run: |
+          ruff check src tests demo
+          ruff format --check src tests demo
+      - name: Test
+        run: pytest -v
+
+  security:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1  # v7
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97  # v7
+        with:
+          python-version: "3.11"
+          cache: pip
+      - name: Install
+        run: |
+          python -m pip install --upgrade pip "setuptools>=83"  # the runner ships an older, vulnerable setuptools
+          pip install -r requirements.txt
+          pip install -e ".[dev]"
+      - name: Static analysis (Bandit)
+        run: bandit -c pyproject.toml -r src demo
+      - name: Known vulnerabilities in dependencies (pip-audit)
+        run: pip-audit --skip-editable
