@@ -24,7 +24,8 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
-# Starlette and Pillow are pinned to versions with known vulnerabilities fixed.
+# Starlette is pinned to a version with known vulnerabilities fixed. Gradio 6.30 caps Pillow
+# below 13, so install "pillow==13.0.0" after this extra (security fixes; see the README).
 demo = ["gradio>=6.30,<7", "starlette>=1.3.1", "pillow>=12.3", "fastapi", "uvicorn"]
 dev = ["pytest", "ruff", "bandit", "pip-audit", "floravision[demo]"]
 

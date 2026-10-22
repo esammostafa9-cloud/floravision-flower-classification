@@ -13,6 +13,9 @@ terms.
   [Creative Commons Attribution 2.0 (CC BY 2.0)](https://creativecommons.org/licenses/by/2.0/).
   The full list of photographers is in the `LICENSE.txt` file inside the archive.
 
+- **Citation:** The TensorFlow Team, *Flowers*, 2019,
+  http://download.tensorflow.org/example_images/flower_photos.tgz
+
 The dataset is **not** included in this repository; it is downloaded by TensorFlow Datasets the
 first time you train or evaluate.
 
@@ -45,14 +48,70 @@ and they will be removed promptly.
 
 ## Pretrained weights
 
-The model is initialised from Keras' ImageNet-pretrained ResNet-50 weights, which are ported from
-the weights released by Kaiming He under the MIT License
-([source](https://github.com/fchollet/deep-learning-models#licensing)). The ImageNet dataset has
-its own [terms of access](https://image-net.org/download).
+The model is initialised from Keras' ImageNet-pretrained ResNet-50 weights. Keras ported them
+([source](https://github.com/fchollet/deep-learning-models#licensing)) from the original ResNet
+models released by Kaiming He et al.
+([source](https://github.com/KaimingHe/deep-residual-networks)). Both are under the MIT License,
+whose notices are reproduced below as that license requires. The ImageNet dataset the weights
+were trained on has its own [terms of access](https://www.image-net.org/download.php), which
+allow only non-commercial research and educational use.
 
-The trained model is published as a GitHub release asset, not stored in the repository. Because
-it starts from ImageNet-pretrained weights, it is offered for non-commercial research and
-educational use.
+```
+The MIT License (MIT)
+
+Copyright (c) 2016 Shaoqing Ren
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+```
+
+```
+MIT License
+
+Copyright (c) 2016 François Chollet
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+```
+
+## The trained model
+
+The trained model (`floravision_resnet50.keras`) is published as a GitHub release asset, not
+stored in the repository, together with a copy of this file. It is **not** covered by this
+repository's MIT License. It is shared for non-commercial research and educational use only,
+because it builds on ImageNet-pretrained weights. It is provided "as is", without warranty of any
+kind, and must not be relied on to identify plants, for example to decide whether a plant is
+safe to eat or touch.
 
 ## Software dependencies
 
