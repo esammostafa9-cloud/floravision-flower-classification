@@ -175,9 +175,17 @@ photos, split 70 / 15 / 15. Metrics above are on the 550 held-out test images.
 colourful petals.
 
 **Tip.** The model only knows these 5 flowers. Any other flower (or a non-flower photo)
-will still be assigned to one of them, usually with low confidence.
+will still be assigned to one of them, sometimes with high confidence. It is a demo: never
+use it to decide whether a plant is safe to eat or touch.
 
 **Classes:** {classes}
+
+**Example photos** (Flickr, [CC BY 2.0](https://creativecommons.org/licenses/by/2.0/)):
+daisy by [Andrés Moreira](https://www.flickr.com/photos/andrix/8708143485/),
+dandelion by [Andrey](https://www.flickr.com/photos/akras/2693136371/),
+roses by [Olga Khomitsevich](https://www.flickr.com/photos/zemzina/488849503/),
+sunflowers by [Stephane Mignon](https://www.flickr.com/photos/topsteph53/8174935717/),
+tulips by [jsogo](https://www.flickr.com/photos/jsogo/8904780994/).
 
 Code: [GitHub]({GITHUB_URL})
 """

@@ -26,6 +26,9 @@ jobs:
           python -m pip install --upgrade pip "setuptools>=83"  # the runner ships an older, vulnerable setuptools
           pip install -r requirements.txt
           pip install -e ".[dev]"
+          # Gradio 6.30 caps Pillow below 13, but Pillow 13 fixes 35+ CVEs in the image
+          # decoders the demo exposes; the test suite verifies the demo works with it.
+          pip install "pillow==13.0.0"
       - name: Lint
         run: |
           ruff check src tests demo
@@ -49,6 +52,9 @@ jobs:
           python -m pip install --upgrade pip "setuptools>=83"  # the runner ships an older, vulnerable setuptools
           pip install -r requirements.txt
           pip install -e ".[dev]"
+          # Gradio 6.30 caps Pillow below 13, but Pillow 13 fixes 35+ CVEs in the image
+          # decoders the demo exposes; the test suite verifies the demo works with it.
+          pip install "pillow==13.0.0"
       - name: Static analysis (Bandit)
         run: bandit -c pyproject.toml -r src demo
       - name: Known vulnerabilities in dependencies (pip-audit)

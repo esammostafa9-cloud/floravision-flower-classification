@@ -96,6 +96,7 @@ The confidence score is a useful guide: when the model is at least 85% sure, whi
 
 **Limitations.** The model only knows these five flowers. It answers with one of them even for
 photos without any flower, so it is suited to demos and learning, not to identifying plants.
+Never use it to decide whether a plant is safe to eat or touch.
 
 ## Built with
 
@@ -108,7 +109,8 @@ Gradio · pytest · GitHub Actions
 <br>
 
 ```bash
-pip install -r requirements.txt -e ".[demo]"
+pip install -e ".[demo]"
+pip install "pillow==13.0.0"   # security fixes; newer than Gradio officially lists
 python -m floravision.download
 python demo/app.py
 ```
@@ -121,7 +123,9 @@ Then open http://127.0.0.1:7860.
 
 The code is released under the [MIT License](LICENSE). The tf_flowers photos are by Flickr
 photographers under [CC BY 2.0](https://creativecommons.org/licenses/by/2.0/); the ones shown in
-this repository are credited in [`THIRD_PARTY_NOTICES.md`](THIRD_PARTY_NOTICES.md). The model
-builds on ImageNet-pretrained weights and is shared for non-commercial research and education.
+this repository are credited in [`THIRD_PARTY_NOTICES.md`](THIRD_PARTY_NOTICES.md), which also
+holds the licenses of the pretrained weights. The trained model is not covered by the MIT License:
+it builds on ImageNet-pretrained weights and is shared, without warranty, for non-commercial
+research and education only.
 
 **Author:** Esam Mustafa Ali Abduljalil Al-Areqi ([@esammostafa9-cloud](https://github.com/esammostafa9-cloud))
