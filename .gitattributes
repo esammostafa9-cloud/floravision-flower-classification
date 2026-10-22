@@ -2,3 +2,10 @@
 *.png binary
 *.jpg binary
 *.gif binary
+
+# Leave development files out of GitHub's "Source code" downloads on releases.
+/tests export-ignore
+/.github export-ignore
+/reports export-ignore
+/.gitignore export-ignore
+/.gitattributes export-ignore
