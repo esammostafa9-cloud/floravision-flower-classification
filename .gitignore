@@ -57,6 +57,7 @@ desktop.ini
 .vscode/
 .idea/
 .claude/
+.obsidian/
 
 # --- Interrupted downloads ---
 *.part
