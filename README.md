@@ -30,8 +30,8 @@ probability of every class.
   separate data, model, training, evaluation and inference modules.
 - **Honest evaluation.** The test set is used once, at the end. Confidence is checked against
   accuracy, and the model's limits are measured and documented.
-- **Production habits.** 67 automated tests, CI on every push, safe handling of uploaded
-  images, and a model download verified by its SHA-256 fingerprint.
+- **Production habits.** Automated tests and security scans on every push, and safe handling
+  of uploaded images.
 
 ## Results
 
@@ -103,29 +103,11 @@ Never use it to decide whether a plant is safe to eat or touch.
 Python · TensorFlow / Keras · TensorFlow Datasets · scikit-learn · NumPy · pandas · Matplotlib ·
 Gradio · pytest · GitHub Actions
 
-<details>
-<summary><b>Run it locally</b></summary>
-
-<br>
-
-```bash
-pip install -e ".[demo]"
-pip install "pillow==13.0.0"   # security fixes; newer than Gradio officially lists
-python -m floravision.download
-python demo/app.py
-```
-
-Then open http://127.0.0.1:7860.
-
-</details>
-
 ## Credits and license
 
 The code is released under the [MIT License](LICENSE). The tf_flowers photos are by Flickr
 photographers under [CC BY 2.0](https://creativecommons.org/licenses/by/2.0/); the ones shown in
 this repository are credited in [`THIRD_PARTY_NOTICES.md`](THIRD_PARTY_NOTICES.md), which also
-holds the licenses of the pretrained weights. The trained model is not covered by the MIT License:
-it builds on ImageNet-pretrained weights and is shared, without warranty, for non-commercial
-research and education only.
+holds the licenses of the pretrained weights. The trained model itself is not published.
 
 **Author:** Esam Mustafa Ali Abduljalil Al-Areqi ([@esammostafa9-cloud](https://github.com/esammostafa9-cloud))

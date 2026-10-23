@@ -1,10 +1,10 @@
 """Gradio demo: classify a flower photo as daisy, dandelion, rose, sunflower or tulip.
 
 Usage:
-    python -m floravision.download   # once: fetch and verify the published model
-    python demo/app.py               # then open http://127.0.0.1:7860
+    FLORAVISION_MODEL_PATH=runs/<run>/model.keras python demo/app.py
+    # then open http://127.0.0.1:7860
 
-Set FLORAVISION_MODEL_PATH to use another model, e.g. runs/<run>/model.keras.
+Without FLORAVISION_MODEL_PATH, the model is loaded from models/floravision_resnet50.keras.
 """
 
 from __future__ import annotations
