@@ -12,7 +12,6 @@ formats ever see the bytes.
 
 from __future__ import annotations
 
-import hmac
 import io
 import os
 import warnings
@@ -24,11 +23,10 @@ import numpy as np
 import tensorflow as tf
 from PIL import Image, ImageOps
 
-from .download import MODEL_FILENAME, MODEL_SHA256, sha256_file
 from .utils import load_json
 
 MODEL_ENV = "FLORAVISION_MODEL_PATH"
-DEFAULT_MODEL_PATH = Path("models") / MODEL_FILENAME
+DEFAULT_MODEL_PATH = Path("models") / "floravision_resnet50.keras"
 
 MAX_IMAGE_BYTES = 10 * 1024 * 1024  # 10 MB
 MAX_IMAGE_PIXELS = 25_000_000  # e.g. 6000 x 4000; about 75 MB once decoded to RGB
@@ -128,23 +126,12 @@ class Classifier:
 
     @classmethod
     def from_env(cls):
-        """Load the model named by ``FLORAVISION_MODEL_PATH``, or the downloaded model.
-
-        The downloaded model's SHA-256 is checked again on every start, so a file swapped
-        after download is refused.
-        """
+        """Load the model named by ``FLORAVISION_MODEL_PATH``, or ``models/`` by default."""
         path = Path(os.environ.get(MODEL_ENV) or DEFAULT_MODEL_PATH)
         if not path.is_file():
             raise RuntimeError(
-                f"No model at {path}. Run `python -m floravision.download` first, or set "
-                f"{MODEL_ENV} to a trained model, e.g. runs/<run>/model.keras"
-            )
-        if path.resolve() == DEFAULT_MODEL_PATH.resolve() and not hmac.compare_digest(
-            sha256_file(path), MODEL_SHA256
-        ):
-            raise RuntimeError(
-                f"{path} does not match the published model's SHA-256. Delete it and run "
-                "`python -m floravision.download` again."
+                f"No model at {path}. Train one with `python -m floravision.train`, then set "
+                f"{MODEL_ENV} to it, e.g. runs/<run>/model.keras"
             )
         return cls.from_path(path)
 

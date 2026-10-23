@@ -106,12 +106,10 @@ SOFTWARE.
 
 ## The trained model
 
-The trained model (`floravision_resnet50.keras`) is published as a GitHub release asset, not
-stored in the repository, together with a copy of this file. It is **not** covered by this
-repository's MIT License. It is shared for non-commercial research and educational use only,
-because it builds on ImageNet-pretrained weights. It is provided "as is", without warranty of any
-kind, and must not be relied on to identify plants, for example to decide whether a plant is
-safe to eat or touch.
+The trained model is **not** published with this repository. If you train one with this code,
+note that it builds on ImageNet-pretrained weights, whose terms allow only non-commercial
+research and educational use. It must not be relied on to identify plants, for example to decide
+whether a plant is safe to eat or touch.
 
 ## Software dependencies
 

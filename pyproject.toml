@@ -33,7 +33,6 @@ dev = ["pytest", "ruff", "bandit", "pip-audit", "floravision[demo]"]
 floravision-train = "floravision.train:main"
 floravision-evaluate = "floravision.evaluate:main"
 floravision-predict = "floravision.predict:main"
-floravision-download = "floravision.download:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]

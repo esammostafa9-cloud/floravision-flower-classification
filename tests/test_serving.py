@@ -101,7 +101,7 @@ def test_from_env_loads_model_path(model_dir, monkeypatch):
 
 def test_from_env_explains_missing_model(tmp_path, monkeypatch):
     monkeypatch.setenv(inference.MODEL_ENV, str(tmp_path / "missing.keras"))
-    with pytest.raises(RuntimeError, match="floravision.download"):
+    with pytest.raises(RuntimeError, match="floravision.train"):
         Classifier.from_env()
 
 
@@ -190,14 +190,13 @@ def test_only_keras_files_are_loaded(tmp_path):
         inference.load_model_file(tmp_path / "model.pkl")
 
 
-def test_default_model_is_reverified_on_load(model_dir, tmp_path, monkeypatch):
-    """A downloaded model swapped for another file afterwards must be refused."""
-    swapped = tmp_path / "floravision_resnet50.keras"
-    swapped.write_bytes((model_dir / "model.keras").read_bytes())
+def test_from_env_falls_back_to_the_default_model_path(model_dir, tmp_path, monkeypatch):
+    default = tmp_path / "floravision_resnet50.keras"
+    default.write_bytes((model_dir / "model.keras").read_bytes())
+    (tmp_path / "class_names.json").write_text(json.dumps(CLASSES))
     monkeypatch.delenv(inference.MODEL_ENV, raising=False)
-    monkeypatch.setattr(inference, "DEFAULT_MODEL_PATH", swapped)
-    with pytest.raises(RuntimeError, match="SHA-256"):
-        Classifier.from_env()
+    monkeypatch.setattr(inference, "DEFAULT_MODEL_PATH", default)
+    assert Classifier.from_env().class_names == CLASSES
 
 
 # --- Gradio demo -----------------------------------------------------------------------
