@@ -11,7 +11,7 @@ readme = "README.md"
 license = { text = "MIT" }
 requires-python = ">=3.10"
 dependencies = [
-    "tensorflow>=2.16,<2.22",
+    "tensorflow>=2.21.0,<2.22",
     "keras>=3.13",
     "tensorflow-datasets>=4.9",
     "importlib_resources",  # used by tensorflow-datasets, which does not declare it

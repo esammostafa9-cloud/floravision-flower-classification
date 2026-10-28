@@ -110,4 +110,4 @@ photographers under [CC BY 2.0](https://creativecommons.org/licenses/by/2.0/); t
 this repository are credited in [`THIRD_PARTY_NOTICES.md`](THIRD_PARTY_NOTICES.md), which also
 holds the licenses of the pretrained weights. The trained model itself is not published.
 
-**Author:** esammostafa9-cloud ([@esammostafa9-cloud](https://github.com/esammostafa9-cloud))
+**Author:** [@esammostafa9-cloud](https://github.com/esammostafa9-cloud)
